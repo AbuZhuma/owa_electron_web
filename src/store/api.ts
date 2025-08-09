@@ -7,7 +7,7 @@ export interface AuthCredentials {
 }
 
 const api: AxiosInstance = axios.create({
-      baseURL: 'http://localhost:4001/api',
+      baseURL: 'https://owa-server.onrender.com/api',
       headers: {
             'Content-Type': 'application/json',
       },

@@ -1,37 +1,38 @@
 {
   "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
   "appId": "YourAppID",
-  "asar": true,
+  "asar": false,
   "directories": {
     "output": "release/${version}"
   },
   "files": [
     "dist-electron",
-    "dist"
+    "dist",
+    "public"
   ],
   "mac": {
     "artifactName": "${productName}_${version}.${ext}",
-    "target": [
-      "dmg",
-      "zip"
-    ]
+    "target": ["dmg", "zip"],
+    "icon": "public/owa_logo.png"
   },
   "win": {
-    "target": [
-      {
-        "target": "nsis",
-        "arch": [
-          "x64"
-        ]
-      }
-    ],
-    "artifactName": "${productName}_${version}.${ext}"
+    "target": [{
+      "target": "nsis",
+      "arch": ["x64"]
+    }],
+    "artifactName": "${productName}_${version}.${ext}",
+    "icon": "public/owa_logo.png"
+  },
+  "linux": {
+    "icon": "public/owa_logo.png"
   },
   "nsis": {
     "oneClick": false,
     "perMachine": false,
     "allowToChangeInstallationDirectory": true,
-    "deleteAppDataOnUninstall": false
+    "deleteAppDataOnUninstall": false,
+    "installerIcon": "public/owa_logo.png",
+    "uninstallerIcon": "public/owa_logo.png"
   },
   "publish": {
     "provider": "generic",

@@ -34,7 +34,7 @@ const indexHtml = path.join(RENDERER_DIST, 'index.html')
 async function createWindow() {
   win = new BrowserWindow({
     title: 'OWA Studio',
-    icon: path.join(  , 'owa.png'),
+    icon: path.join(process.env.VITE_PUBLIC, 'owa_logo.png'),
     width: 1200,
     height: 800,
     minWidth: 800,

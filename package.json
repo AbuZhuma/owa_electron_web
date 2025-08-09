@@ -3,7 +3,6 @@
   "version": "2.2.0",
   "main": "dist-electron/main/index.js",
   "license": "MIT",
-  "icon": "/home/user/Downloads/owa_logo.png",
   "private": true,
   "debug": {
     "env": {
