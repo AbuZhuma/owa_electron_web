@@ -1,0 +1,28 @@
+.control {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 6px 40px;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-size: 14px;
+  justify-content: space-between;
+  gap: 30px;
+}
+.control p{
+  cursor: pointer;
+  margin: 0;
+}
+.control a {
+  color: #2d3748;
+  text-decoration: none;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: background-color 0.1s ease;
+}
+
+.control a:hover {
+  background-color: #e2e8f0;
+}

@@ -1,0 +1,112 @@
+.wrapper {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* background-color: #f8f9fa; */
+  border-radius: 8px;
+  color: #2d3748;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 18px;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 8px 0;
+  margin-bottom: 12px;
+}
+
+.btnToggle {
+  background-color: transparent;
+  color: #4a5568;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.btnToggle:hover {
+  color: #2d3748;
+}
+
+.create {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fieldBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input,
+.textarea,
+.select {
+  padding: 8px 10px;
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #2d3748;
+}
+
+.input:focus,
+.textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #3182ce;
+}
+
+.textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.btnSubmit {
+  width: max-content;
+  padding: 8px 16px;
+  background-color: #3182ce;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btnSubmit:hover {
+  background-color: #2b6cb0;
+}
+
+.blockingGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.keyValuePair {
+  display: flex;
+  gap: 8px;
+}
+
+.btnAddPair {
+  width: max-content;
+  padding: 6px 12px;
+  background-color: #e2e8f0;
+  color: #2d3748;
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btnAddPair:hover {
+  background-color: #cbd5e0;
+}

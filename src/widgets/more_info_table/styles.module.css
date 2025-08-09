@@ -1,0 +1,29 @@
+.oneClient h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: #3b4756;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.infoTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c2c2c;
+}
+
+.infoTable td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: top;
+}
+
+.infoTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.infoTable td:first-child {
+  font-weight: 600;
+  width: 150px;
+  color: #4a5568;
+}

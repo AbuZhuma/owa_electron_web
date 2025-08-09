@@ -1,0 +1,10 @@
+.page {
+      width: 100%;
+      padding: 40px;
+      color: #2c2c2c;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      box-sizing: border-box;
+}
