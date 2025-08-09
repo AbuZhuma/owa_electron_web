@@ -13,6 +13,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && electron-builder",
+    "buildwb": "tsc && vite build",
     "preview": "vite preview",
     "pretest": "vite build --mode=test",
     "test": "vitest run"
