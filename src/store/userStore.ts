@@ -1,7 +1,7 @@
 import { data } from 'react-router-dom';
 import { IOneRequest } from "@/types/crm"
 import { create } from "zustand"
-import { getMyInfo, getUsers, loginUser, registerUser, setAuthToken, updateMe, updateOne } from "./api"
+import { deletUser, getMyInfo, getUsers, loginUser, registerUser, setAuthToken, updateMe, updateOne } from "./api"
 import { IUser, IUserReg } from "@/types/users"
 
 interface IUserStore {
@@ -16,7 +16,10 @@ interface IUserStore {
   register: (params: IUserReg) => void
   updateMe: (data: IUser) => void
   updateOne: (data: any, username: string) => void
-  logout: () => void
+  logout: () => void,
+  setLoad: (bull: boolean) => void,
+  deleteUser: (username: string) => void,
+  loading: boolean
 }
 
 const initialUser: IUser = {
@@ -24,7 +27,7 @@ const initialUser: IUser = {
   job_title: "",
   role: "",
   tasks: [],
-  more: []
+  more: [],
 }
 
 const userStore = create<IUserStore>((set, get) => ({
@@ -33,11 +36,11 @@ const userStore = create<IUserStore>((set, get) => ({
   isAuth: false,
   archive: [],
   users: [],
-
+  loading: true,
+  setLoad: (bull) => set({ loading: bull }),
   getUser: async () => {
     const token = localStorage.getItem("token")
     if (!token) return
-
     try {
       setAuthToken(token)
       const res = await getMyInfo()
@@ -49,7 +52,21 @@ const userStore = create<IUserStore>((set, get) => ({
     } catch (error) {
       console.error("getUser error:", error)
       set({ userStoreError: "Ошибка при получении данных пользователя", isAuth: false, user: initialUser })
-      localStorage.removeItem("token")
+    }
+  },
+  deleteUser: async (username) => {
+    try {
+      const res = await deletUser(username)
+      console.log(res);
+      const users = get().users.filter((el) => {
+        if (el.username !== username) {
+          return el
+        }
+      })
+      set({ users: users })
+    } catch (error) {
+      console.error("deleteUser error:", error)
+      set({ userStoreError: "Ошибка при получении пользователей", isAuth: false, user: initialUser })
     }
   },
   getUsers: async () => {
@@ -73,7 +90,14 @@ const userStore = create<IUserStore>((set, get) => ({
   },
   updateOne: async (data, username) => {
     try {
-      await updateOne(data, username)
+      const res = await updateOne(data, username)
+      const users = get().users.map((el) => {
+        if(el.username === username){
+          return res.data.user
+        }
+        return el
+      })
+      set({ users: users })
     } catch (error) {
       console.error("getUser error:", error)
       set({ userStoreError: "Error" })

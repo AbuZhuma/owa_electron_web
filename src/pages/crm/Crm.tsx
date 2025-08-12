@@ -1,18 +1,17 @@
 import styles from "./styles.module.css"
 import Page from "@/shared/page/Page"
-import ClientsList from "./components/ClientsList"
-import CreateClient from "./components/CreateClient"
-import CreateRequest from "./components/CreateRequest"
-import RequestList from "./components/RequestList"
+import ClientsList from "../../widgets/crm/clients/ClientsList"
+import CreateClient from "../../widgets/crm/clients/CreateClient"
+import CreateRequest from "../../widgets/crm/requests/CreateRequest"
+import RequestList from "../../widgets/crm/requests/RequestList"
 import { ReactNode, useEffect, useState } from "react"
-import Archive from "./components/Archive"
+import Archive from "../../widgets/crm/archive/Archive"
 import userStore from "@/store/userStore"
-import { useNavigate } from "react-router-dom"
+import ReviewList from "../../widgets/crm/reviews/ReviewsList"
 
 const Crm = () => {
       const [tab, setTab] = useState("requests")
-      const { isAuth, user } = userStore()
-      const navigate = useNavigate()
+      const { user } = userStore()
 
       const tabs: { [key: string]: ReactNode } = {
             requests: (
@@ -23,8 +22,13 @@ const Crm = () => {
             ),
             clients: (
                   <div className={styles.one}>
-                        {user.role === "admin" || user.role === "manager" ? <CreateClient />:null}
+                        {user.role === "admin" || user.role === "manager" ? <CreateClient /> : null}
                         <ClientsList />
+                  </div>
+            ),
+            review: (
+                  <div className={styles.one}>
+                        <ReviewList />
                   </div>
             ),
             archive: (
@@ -33,18 +37,24 @@ const Crm = () => {
                   </div>
             )
       }
-      useEffect(() => {
-            if(!isAuth){
-                  navigate("/profile")
-                  alert("Please login")
-            }
-      },[])
+      
+      const renderTabs = () => {
+            return (
+                  <>
+                        {Object.keys(tabs).map((el) => {
+                              if(el === "review" && !(user.role === "admin" || user.role === "manager")){
+                                    return null
+                              }
+                              return <button className={tab === el ? styles.active : styles.anActive} onClick={() => setTab(el)}>{el}</button>
+                        })}
+                  </>
+            )
+      }
+
       return (
             <Page>
                   <div className={styles.tabs}>
-                        <button className={tab === "requests" ? styles.active : styles.anActive} onClick={() => setTab("requests")}>Requests</button>
-                        <button className={tab === "clients" ? styles.active : styles.anActive} onClick={() => setTab("clients")}>Clients</button>
-                        <button className={tab === "archive" ? styles.active : styles.anActive} onClick={() => setTab("archive")}>Archive</button>
+                        {renderTabs()}
                   </div>
                   {tabs[tab]}
             </Page>

@@ -15,6 +15,13 @@
   cursor: pointer;
   margin: 0;
 }
+.btn{
+  margin-left: 10px;
+}
+.links{
+  display: flex;
+  align-items: center;
+}
 .control a {
   color: #2d3748;
   text-decoration: none;

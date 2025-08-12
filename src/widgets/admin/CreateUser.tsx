@@ -1,6 +1,6 @@
 import { job_titles, roles } from "@/shared/constants"
 import userStore from "@/store/userStore"
-import ReusableForm from "@/widgets/reusable_form/ReusableForm"
+import ReusableForm from "@/shared/reusable_form/ReusableForm"
 
 const CreateUser = () => {
       const { register } = userStore()

@@ -1,10 +1,10 @@
 import Page from "@/shared/page/Page"
-import UserInfo from "./components/UserInfo"
+import UserInfo from "../../widgets/profile/UserInfo"
 import userStore from "@/store/userStore"
-import Login from "./components/Login"
-import UserTasks from "./components/UserTasks"
+import Login from "../../widgets/profile/Login"
+import UserTasks from "../../widgets/profile/UserTasks"
 import Button from "@/shared/button/Button"
-import UpdateMe from "./components/UpdateMe"
+import UpdateMe from "../../widgets/profile/UpdateMe"
 
 const Profile = () => {
       const { isAuth, logout } = userStore()

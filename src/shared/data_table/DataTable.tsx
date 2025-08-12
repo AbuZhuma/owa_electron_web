@@ -1,6 +1,7 @@
-import React, { useState, ReactNode } from "react"
+import React, { useState, ReactNode, useEffect } from "react"
 import styles from "./styles.module.css"
-import MoreInfo from "@/widgets/more_info_table/MoreInfoTable"
+import MoreInfo from "@/shared/more_info_table/MoreInfoTable"
+import { isArrayOfObjects } from "../helpers"
 
 interface DataTableProps<T extends Record<string, any>> {
   data: T[]
@@ -8,7 +9,7 @@ interface DataTableProps<T extends Record<string, any>> {
   form?: ((item: T) => ReactNode) | null
 }
 
-const DataTable = <T extends Record<string, any>>({
+const DataTable = React.memo(<T extends Record<string, any>>({
   data,
   title,
   form = null,
@@ -24,16 +25,6 @@ const DataTable = <T extends Record<string, any>>({
 
   const handleRowClick = (index: number) => {
     setSelectedIndex(selectedIndex === index ? null : index)
-  }
-
-  const isArrayOfObjects = (value: any): boolean => {
-    return (
-      Array.isArray(value) &&
-      value.length > 0 &&
-      typeof value[0] === "object" &&
-      value[0] !== null &&
-      !Array.isArray(value[0])
-    )
   }
 
   const renderCellSummary = (value: any) => {
@@ -56,7 +47,6 @@ const DataTable = <T extends Record<string, any>>({
       <div className={styles.expandedWrapper}>
         {keys.map((key) => {
           const value = item[key]
-
           if (isArrayOfObjects(value)) {
             const nestedKeys = Object.keys(value[0])
             return (
@@ -86,7 +76,7 @@ const DataTable = <T extends Record<string, any>>({
 
           return null
         })}
-        <MoreInfo item={item} form={form ? form(item) : null} />
+        <MoreInfo item={item} form={form ? form(item) : <></>} />
       </div>
     )
   }
@@ -95,14 +85,14 @@ const DataTable = <T extends Record<string, any>>({
   return (
     <div className={styles.wrapper}>
       {title && <div className={styles.title}>{title}</div>}
-
       <div className={styles.tableWrapper}>
         <table className={styles.table}>
           <thead>
             <tr>
-              {filteredColumns.map((col) => (
-                <th key={col}>{col}</th>
-              ))}
+              {filteredColumns.map((col) => {
+                if(col === "uuid") return null
+                return <th key={col}>{col}</th>
+              })}
             </tr>
           </thead>
           <tbody>
@@ -116,9 +106,10 @@ const DataTable = <T extends Record<string, any>>({
                     backgroundColor: selectedIndex === i ? "#e2e8f0" : undefined,
                   }}
                 >
-                  {filteredColumns.map((col) => (
-                    <td key={col}>{renderCellSummary(item[col])}</td>
-                  ))}
+                  {filteredColumns.map((col) => {
+                    if (col === "uuid") return null
+                    return <td key={col}>{renderCellSummary(item[col])}</td>
+                  })}
                 </tr>
                 {selectedIndex === i && (
                   <tr>
@@ -134,6 +125,5 @@ const DataTable = <T extends Record<string, any>>({
       </div>
     </div>
   )
-}
-
+})
 export default DataTable

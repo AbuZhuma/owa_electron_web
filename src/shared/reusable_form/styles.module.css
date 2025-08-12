@@ -4,7 +4,9 @@
   border-radius: 8px;
   color: #2d3748;
 }
-
+.hidden{
+  display: none;
+}
 .header {
   display: flex;
   justify-content: space-between;

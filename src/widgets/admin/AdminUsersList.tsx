@@ -1,5 +1,5 @@
 import userStore from '@/store/userStore'
-import DataTable from '@/widgets/data_table/DataTable'
+import DataTable from '@/shared/data_table/DataTable'
 import ControlUser from './ControlUser'
 import { FC } from 'react'
 

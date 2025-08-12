@@ -1,7 +1,7 @@
 import { request_status_list } from '@/shared/constants'
 import useCrmStore from '@/store/useCrmStore'
 import userStore from '@/store/userStore'
-import ReusableForm from '@/widgets/reusable_form/ReusableForm'
+import ReusableForm from '@/shared/reusable_form/ReusableForm'
 import { useMemo } from 'react'
 
 const CreateRequest = () => {
@@ -10,6 +10,7 @@ const CreateRequest = () => {
       const clientsName = useMemo(() => {
             return clients.map(el => el.username)
       }, [clients])
+      
       const usersName = useMemo(() => {
             return users.map(el=>el.username)
       }, [users])

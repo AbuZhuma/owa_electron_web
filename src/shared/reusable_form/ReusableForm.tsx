@@ -1,27 +1,31 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styles from "./styles.module.css"
 
 interface Field {
   name: string
   type: "text" | "textarea" | "date" | "number" | "password" | "selector"
   placeholder?: string
+  initVal?: string
   isBlocking?: boolean
-  selects?: string[] // для selector
+  selects?: string[] 
 }
 
 interface ReusableFormProps {
   fields: Field[]
   defaultOpen?: boolean
   onSubmit: (data: any) => void
-  title?: string
+  title?: string,
+  disabled?: boolean
 }
 
-const ReusableForm = ({ fields, onSubmit, title, defaultOpen = false }: ReusableFormProps) => {
+const ReusableForm = ({ fields, onSubmit, title, defaultOpen = false, disabled = false }: ReusableFormProps) => {
   const [formData, setFormData] = useState<Record<string, string>>({})
   const [blockFields, setBlockFields] = useState<Record<string, [string, string][]>>({})
   const [isOpen, setIsOpen] = useState(defaultOpen)
+  const [error, setError] = useState("")
 
   const handleChange = (name: string, value: string) => {
+    setError("")
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
@@ -31,6 +35,7 @@ const ReusableForm = ({ fields, onSubmit, title, defaultOpen = false }: Reusable
     keyOrValue: "key" | "value",
     value: string
   ) => {
+    setError("")
     setBlockFields((prev) => {
       const updated = [...(prev[fieldName] || [])]
       const existing = updated[index] || ["", ""]
@@ -47,28 +52,52 @@ const ReusableForm = ({ fields, onSubmit, title, defaultOpen = false }: Reusable
   }
 
   const handleSubmit = () => {
-    const result: Record<string, string | [string, string][]> = {}
+    let hasError = false;
+    const result: Record<string, string | [string, string][]> = {};
 
-    fields.forEach((field) => {
+    for (const field of fields) {
       if (field.isBlocking) {
-        result[field.name] = blockFields[field.name] || []
+        const pairs = blockFields[field.name] || [];
+        if (pairs.length && (!pairs[0][0] || !pairs[0][1])) {
+          setError(`Заполните ключ и значение для ${field.name}`);
+          hasError = true;
+          break;
+        }
+        result[field.name] = pairs;
       } else {
-        result[field.name] = formData[field.name] || ""
+        const value = formData[field.name] || field.initVal || "";
+        if (!value.trim()) {
+          setError(`${field.name} field required!`);
+          hasError = true;
+          break;
+        }
+        result[field.name] = value;
+      }
+    }
+
+    if (hasError) return;
+    onSubmit(result);
+    setFormData({});
+    setBlockFields({});
+    if (!defaultOpen) {
+      setIsOpen(false);
+    }
+  };
+
+
+  useEffect(() => {
+    fields.forEach(({ name, isBlocking, initVal = "" }) => {
+      if (!isBlocking) {
+        setFormData((prev) => ({ ...prev, [name]: initVal }))
       }
     })
-
-    onSubmit(result)
-    setFormData({})
-    setBlockFields({})
-    if (!defaultOpen) {
-      setIsOpen(false)
-    }
-  }
+  }, [])
 
   return (
-    <div className={styles.wrapper}>
+    <div className={disabled ? styles.hidden : styles.wrapper}>
       <div className={styles.header}>
         {title && <span>{title}</span>}
+        {error.length ? <span>{error}</span> : null}
         {!defaultOpen &&
           <button onClick={() => setIsOpen(!isOpen)} className={styles.btnToggle}>
             {isOpen ? "Close" : "Open"}
@@ -104,7 +133,7 @@ const ReusableForm = ({ fields, onSubmit, title, defaultOpen = false }: Reusable
                     onClick={() => addBlockingPair(name)}
                     className={styles.btnAddPair}
                   >
-                    Добавить
+                    Add
                   </button>
                 </div>
               ) : type === "textarea" ? (

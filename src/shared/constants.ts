@@ -1,25 +1,15 @@
 export const request_status_list = [
-  "To assign",
-  "In focus",
-  "Low priority",
-  "On review",
-  "Approved",
-  "Pending check",
-  "Most urgent",
-  "Not critical",
-  "Standalone",
-  "Group task",
-  "Delayed",
-  "Not matter",
-  "Most one",
-  "No blocker",
-  "Has blocker",
-  "Needs update",
-  "Not ready",
-  "Ready now",
-  "Scheduled",
-  "On hold"
-]
+  "Critical — fix now",
+  "High — do today",
+  "Ready for work",
+  "In progress",
+  "Next in line",
+  "Needs review",
+  "Blocked",
+  "Waiting for approval",
+  "Planned",
+  "Low priority"
+];
 
 export const roles = ["admin", "manager", "worker"]
 

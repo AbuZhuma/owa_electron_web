@@ -1,5 +1,5 @@
 type IOneRequest = {
-      _id?: string,
+      uuid: string,
       client: string;
       title: string;
       dedline: string;
@@ -11,6 +11,7 @@ type IOneRequest = {
 type IOneClient = {
       username: string,
       company: string,
+      manager: string,
       more: string[][],
 }
 

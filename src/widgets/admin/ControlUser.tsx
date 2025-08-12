@@ -1,6 +1,7 @@
+import Button from '@/shared/button/Button'
 import { job_titles, roles } from '@/shared/constants'
 import userStore from '@/store/userStore'
-import ReusableForm from '@/widgets/reusable_form/ReusableForm'
+import ReusableForm from '@/shared/reusable_form/ReusableForm'
 import { FC } from 'react'
 
 interface IControl{
@@ -8,19 +9,21 @@ interface IControl{
 }
 
 const ControlUser:FC<IControl> = ({data}) => {
-      const {updateOne} = userStore()
+      const {updateOne, deleteUser} = userStore()
+
       return (
-            <div>
+            <div style={{display: "flex", flexDirection: "column", gap:"10px"}}>
                   <ReusableForm
                         title="Update user"
                         defaultOpen={true}
                         fields={[
-                              { name: "role", type: "selector", placeholder: "User role", selects: roles },
-                              { name: "job_title", type: "selector", placeholder: "Choose job title", selects: job_titles},
+                              { name: "role", type: "selector",initVal: data.role, placeholder: "User role", selects: roles },
+                              { name: "job_title", type: "selector", initVal: data.job_title, placeholder: "Choose job title", selects: job_titles},
                               { name: "more", type: "textarea", placeholder: "More info", isBlocking: true }
                         ]}
                         onSubmit={(d) => updateOne(d, data.username)}
                   />
+                  <Button text='Delete this user' onClick={() => deleteUser(data.username)}/>
             </div>
       )
 }

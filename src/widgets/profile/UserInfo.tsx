@@ -1,4 +1,4 @@
-import MoreInfo from "@/widgets/more_info_table/MoreInfoTable"
+import MoreInfo from "@/shared/more_info_table/MoreInfoTable"
 import userStore from "@/store/userStore"
 
 const UserInfo = () => {

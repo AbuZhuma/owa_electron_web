@@ -1,5 +1,5 @@
 import useCrmStore from '@/store/useCrmStore'
-import ReusableForm from '@/widgets/reusable_form/ReusableForm'
+import ReusableForm from '@/shared/reusable_form/ReusableForm'
 
 const CreateClient = () => {
       const {createClient} = useCrmStore()

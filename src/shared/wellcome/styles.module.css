@@ -1,0 +1,26 @@
+.wrapper {
+  margin-bottom: 20px;
+}
+
+.h3 {
+  margin-top: 10px;
+  font-weight: normal;
+  color: #666;
+}
+
+.progressWrapper {
+  margin: 20px 0;
+}
+
+.progressBar {
+  background: #ddd;
+  height: 8px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progressFill {
+  background: linear-gradient(90deg, #4cafef, #00c6ff);
+  height: 100%;
+  transition: width 0.4s ease;
+}

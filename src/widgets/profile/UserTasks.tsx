@@ -1,13 +1,12 @@
-import CreateComment from "@/pages/crm/components/CreateComment"
+import CreateComment from "@/widgets/crm/requests/CreateComment"
 import userStore from "@/store/userStore"
-import DataTable from "@/widgets/data_table/DataTable"
-import React from "react"
+import DataTable from "@/shared/data_table/DataTable"
 
-const UserTasks = React.memo(() => {
+const UserTasks = () => {
       const {user} = userStore()
       return (
             <DataTable form={(item) => <CreateComment data={item}/>} title={`${user.username} active tasks`} data={user.tasks}/>
       )
-})
+}
 
 export default UserTasks

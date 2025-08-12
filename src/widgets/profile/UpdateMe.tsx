@@ -1,5 +1,5 @@
 import userStore from '@/store/userStore'
-import ReusableForm from '@/widgets/reusable_form/ReusableForm'
+import ReusableForm from '@/shared/reusable_form/ReusableForm'
 
 const UpdateMe = () => {
       const {updateMe} = userStore()
