@@ -73,6 +73,8 @@ const useCrmStore = create<IClientStore>((set, get) => ({
                         get().getClients()
                   } else if (type === "request") {
                         get().getRequests()
+                  }else if(type === "review"){
+                        get().getReviews()
                   }
                   set({ archive: [...get().archive, res.data] })
             } catch (error) {

@@ -29,7 +29,7 @@ const ReviewControll: FC<ICreateComment> = ({ data }) => {
                         fields={[
                               { name: "commit", type: "text", placeholder: "Commit" },
                         ]}
-                        onSubmit={(d) => archivate(data.uuid, "request", d.commit)}
+                        onSubmit={(d) => archivate(data.uuid, "review", d.commit)}
                         disabled={!(user.role === "admin" || user.role === "manager")}
                   />
             </div>
