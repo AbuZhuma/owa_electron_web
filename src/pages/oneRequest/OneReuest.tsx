@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { searchReqs } from "@/store/api"
 import MoreInfo from "@/shared/more_info_table/MoreInfoTable"
-import DataTable from "@/shared/data_table/DataTable"
 import CreateComment from "@/widgets/crm/requests/CreateComment"
 import { isArrayOfObjects } from "@/shared/helpers"
 
@@ -68,7 +67,7 @@ const OneReuest = () => {
             <Page>
                   {req ?
                         renderExpandedDetails(req[0]) :
-                        <p>No data found</p>
+                        <p>Loading...</p>
                   }
             </Page>
       )

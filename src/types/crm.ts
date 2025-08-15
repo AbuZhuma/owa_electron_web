@@ -8,6 +8,12 @@ type IOneRequest = {
       more: string[][];
       comments?: string[][]
 }
+type IFilter = {
+      client: string[],
+      status: string[],
+      dedline: string, 
+      executor: string[]
+}
 type IOneClient = {
       username: string,
       company: string,
@@ -15,4 +21,4 @@ type IOneClient = {
       more: string[][],
 }
 
-export type { IOneClient, IOneRequest }
+export type { IOneClient, IOneRequest, IFilter }

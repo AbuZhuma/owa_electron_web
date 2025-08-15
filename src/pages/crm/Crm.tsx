@@ -8,14 +8,18 @@ import { ReactNode, useEffect, useState } from "react"
 import Archive from "../../widgets/crm/archive/Archive"
 import userStore from "@/store/userStore"
 import ReviewList from "../../widgets/crm/reviews/ReviewsList"
+import Filter from "@/widgets/crm/filter/Filter"
+import useCrmStore from "@/store/useCrmStore"
 
 const Crm = () => {
       const [tab, setTab] = useState("requests")
+      const {resetFilters} = useCrmStore()
       const { user } = userStore()
 
       const tabs: { [key: string]: ReactNode } = {
             requests: (
                   <div className={styles.one}>
+                        <Filter type="requests"/>
                         {user.role === "admin" || user.role === "manager" ? <CreateRequest /> : null}
                         <RequestList />
                   </div>
@@ -28,11 +32,13 @@ const Crm = () => {
             ),
             review: (
                   <div className={styles.one}>
+                        <Filter type="reviews"/>
                         <ReviewList />
                   </div>
             ),
             archive: (
                   <div className={styles.one}>
+                        <Filter type="archive"/>
                         <Archive />
                   </div>
             )
@@ -45,7 +51,10 @@ const Crm = () => {
                               if(el === "review" && !(user.role === "admin" || user.role === "manager")){
                                     return null
                               }
-                              return <button className={tab === el ? styles.active : styles.anActive} onClick={() => setTab(el)}>{el}</button>
+                              return <button className={tab === el ? styles.active : styles.anActive} onClick={() => {
+                                    setTab(el)
+                                    resetFilters()
+                              }}>{el}</button>
                         })}
                   </>
             )
