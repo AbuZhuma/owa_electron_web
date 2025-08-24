@@ -28,7 +28,7 @@ export const setAuthToken = (token: string | null) => {
 export const registerUser = (data: IUserReg) =>
       api.post<{ message: string }>('/auth/register', data)
 
-export const loginUser = (data: AuthCredentials) =>
+export const loginUser = (data: AuthCredentials) => 
       api.post('/auth/login', data)
 
 export const getUsers = () => 
