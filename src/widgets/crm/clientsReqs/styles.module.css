@@ -1,0 +1,33 @@
+.main {
+  width: 100%;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.tabButton {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  background: #f7f7f7;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.tabButton:hover {
+  background: #e0e0e0;
+}
+
+.active {
+  background: #0070f3;
+  color: white;
+  border-color: #0070f3;
+}
+
+.tableContainer {
+  width: 100%;
+}

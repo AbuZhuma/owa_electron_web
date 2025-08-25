@@ -10,18 +10,24 @@ import userStore from "@/store/userStore"
 import ReviewList from "../../widgets/crm/reviews/ReviewsList"
 import Filter from "@/widgets/crm/filter/Filter"
 import useCrmStore from "@/store/useCrmStore"
+import ClientRequest from "@/widgets/crm/clientsReqs/ClientRequest"
 
 const Crm = () => {
       const [tab, setTab] = useState("requests")
-      const {resetFilters} = useCrmStore()
+      const { resetFilters } = useCrmStore()
       const { user } = userStore()
 
       const tabs: { [key: string]: ReactNode } = {
             requests: (
                   <div className={styles.one}>
-                        <Filter type="requests"/>
+                        <Filter type="requests" />
                         {user.role === "admin" || user.role === "manager" ? <CreateRequest /> : null}
                         <RequestList />
+                  </div>
+            ),
+            projects: (
+                  <div className={styles.one}>
+                        <ClientRequest />
                   </div>
             ),
             clients: (
@@ -32,23 +38,23 @@ const Crm = () => {
             ),
             review: (
                   <div className={styles.one}>
-                        <Filter type="reviews"/>
+                        <Filter type="reviews" />
                         <ReviewList />
                   </div>
             ),
             archive: (
                   <div className={styles.one}>
-                        <Filter type="archive"/>
+                        <Filter type="archive" />
                         <Archive />
                   </div>
             )
       }
-      
+
       const renderTabs = () => {
             return (
                   <>
                         {Object.keys(tabs).map((el) => {
-                              if(el === "review" && !(user.role === "admin" || user.role === "manager")){
+                              if (el === "review" && !(user.role === "admin" || user.role === "manager")) {
                                     return null
                               }
                               return <button className={tab === el ? styles.active : styles.anActive} onClick={() => {

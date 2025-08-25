@@ -53,7 +53,7 @@ const useCrmStore = create<IClientStore>((set, get) => ({
       filters: defaultFilters(),
       filterType: "requests",
       isFiltering: { requests: false, archive: false, reviews: false },
-
+      
       setFilter: (type, key, filters) => {
             const state = get();
 
@@ -103,7 +103,6 @@ const useCrmStore = create<IClientStore>((set, get) => ({
             const filtered = base.filter(r => filtersFns.every(f => f(r)));
             set({ [dataKey]: filtered } as Pick<IClientStore, typeof dataKey>);
       },
-
       resetFilters: () => {
             const state = get();
             for (let el in state.isFiltering) {
@@ -131,7 +130,6 @@ const useCrmStore = create<IClientStore>((set, get) => ({
                   set({ isFiltering: { requests: false, archive: false, reviews: false }, filters: defaultFilters() })
             }
       },
-
       createClient: async (data) => {
             try {
                   await createClient(data);
