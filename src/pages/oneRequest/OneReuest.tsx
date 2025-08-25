@@ -13,7 +13,6 @@ const OneReuest = () => {
       const getReq = async () => {
             try {
                   const res = await searchReqs({ uuid })
-                  console.log(res);
                   setReq(res.data)
             } catch (error) {
                   console.log(error);

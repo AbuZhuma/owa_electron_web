@@ -57,7 +57,6 @@ const userStore = create<IUserStore>((set, get) => ({
   deleteUser: async (username) => {
     try {
       const res = await deletUser(username)
-      console.log(res);
       const users = get().users.filter((el) => {
         if (el.username !== username) {
           return el
@@ -81,7 +80,6 @@ const userStore = create<IUserStore>((set, get) => ({
   updateMe: async (data) => {
     try {
       const res = await updateMe(data)
-      console.log(res);
       get().getUser()
     } catch (error) {
       console.error("getUser error:", error)
@@ -122,7 +120,6 @@ const userStore = create<IUserStore>((set, get) => ({
   register: async (data) => {
     try {
       const res = await registerUser(data)
-      console.log(res);
       get().getUsers()
     } catch (error) {
       console.error("login error:", error)
