@@ -20,7 +20,23 @@ const MoreInfo = <T extends Record<string, any>>({ item, title = "Больше �
     )
 
   const extraKeys = Object.keys(item).filter((key) => isArrayOfStringPairs(item[key]))
-    
+
+  const renderValue = (value: any) => {
+    if (value === null || value === undefined) return ""
+    if (typeof value === "object") return ""
+
+    const stringValue = String(value)
+    const urlRegex = /(https?:\/\/[^\s]+)/g
+    if (urlRegex.test(stringValue)) {
+      return (
+        <a href={stringValue} target="_blank" rel="noopener noreferrer">
+          Перейти по ссылке
+        </a>
+      )
+    }
+    return stringValue
+  }
+
   return (
     <div className={styles.oneClient}>
       <h3>{title}</h3>
@@ -32,7 +48,7 @@ const MoreInfo = <T extends Record<string, any>>({ item, title = "Больше �
             return (
               <tr key={key}>
                 <td><b>{key}</b></td>
-                <td>{String(value)}</td>
+                <td>{renderValue(value)}</td>
               </tr>
             )
           })}
@@ -44,7 +60,7 @@ const MoreInfo = <T extends Record<string, any>>({ item, title = "Больше �
               {item[key].map(([k, v]: [string, string], i: number) => (
                 <tr key={i}>
                   <td>{k}</td>
-                  <td>{v}</td>
+                  <td>{renderValue(v)}</td>
                 </tr>
               ))}
             </React.Fragment>
