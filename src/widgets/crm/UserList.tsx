@@ -5,7 +5,7 @@ const UsersList = () => {
       const {users} = userStore()
       
       return (
-            <DataTable title='Employees' data={users} />
+            <DataTable title='Сотрудники' data={users} />
       )
 }
 

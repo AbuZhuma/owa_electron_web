@@ -20,17 +20,19 @@ const EditClient: FC<IEditClient> = ({ data }) => {
       }, [users])
       return (
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                  <ReusableForm
-                        title="Edit client"
-                        defaultOpen={true}
-                        fields={[
-                              { name: "username", type: "text", placeholder: "Username", initVal: data.username},
-                              { name: "company", type: "text", placeholder: "Company", initVal: data.company},
-                              { name: "manager", type: "selector", placeholder: "Client manager", initVal: data.manager, selects: usersName },
-                              { name: "more", type: "textarea", placeholder: "More info", isBlocking: true }
-                        ]}
-                        onSubmit={(d) => editClient(d, data.username)}
-                  />
+                  {user.role === "admin" || user.username === data.manager ?
+                        <ReusableForm
+                              title="Изменить клиента"
+                              defaultOpen={true}
+                              fields={[
+                                    { name: "username", type: "text", placeholder: "Имя", initVal: data.username },
+                                    { name: "company", type: "text", placeholder: "Компания", initVal: data.company },
+                                    { name: "manager", type: "selector", placeholder: "Менеджер", initVal: data.manager, selects: usersName },
+                                    { name: "more", type: "textarea", placeholder: "Больше информаци", isBlocking: true }
+                              ]}
+                              onSubmit={(d) => editClient(d, data.username)}
+                        />
+                        : null}
             </div>
       )
 }

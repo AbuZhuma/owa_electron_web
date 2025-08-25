@@ -13,12 +13,12 @@ const Control = () => {
       <p onClick={() => navigate("/")}>OWA studio</p>
       {isAuth ?
         <div className={styles.links}>
-          <Link to={"/"}>Home</Link>
+          <Link to={"/"}>Главная</Link>
           <Link to={"/crm"}>Crm</Link>
-          {user.role === "admin" ? <Link to={"/admin"}>Admin</Link> : null}
-          <Link to={"/profile"}>{isAuth ? "Profile" : "Login"}</Link>
+          {user.role === "admin" ? <Link to={"/admin"}>Админ</Link> : null}
+          <Link to={"/profile"}>{isAuth ? "Профиль" : "Вход"}</Link>
           <div className={styles.btn}>
-            <Button onClick={init} text="Reload" />
+            <Button onClick={init} text="Обновить" />
           </div>
         </div>
         : null}

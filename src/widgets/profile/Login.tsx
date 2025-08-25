@@ -8,10 +8,10 @@ const Login = () => {
       return (
             <div style={{ width: "500px", margin: "0 auto" }}>
                   <ReusableForm
-                        title={"Login"}
+                        title={"Вход"}
                         fields={[
-                              { name: "username", type: "text", placeholder: "Username" },
-                              { name: "password", type: "password", placeholder: "Password" },
+                              { name: "username", type: "text", placeholder: "Имя" },
+                              { name: "password", type: "password", placeholder: "Пароль" },
                         ]}
                         defaultOpen={true}
                         onSubmit={async (data) => {

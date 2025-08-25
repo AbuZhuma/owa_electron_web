@@ -67,7 +67,7 @@ const ReusableForm = ({ fields, onSubmit, title, defaultOpen = false, disabled =
       } else {
         const value = formData[field.name] || field.initVal || "";
         if (!value.trim()) {
-          setError(`${field.name} field required!`);
+          setError(`${field.name} поля обязательна!`);
           hasError = true;
           break;
         }
@@ -100,7 +100,7 @@ const ReusableForm = ({ fields, onSubmit, title, defaultOpen = false, disabled =
         {error.length ? <span>{error}</span> : null}
         {!defaultOpen &&
           <button onClick={() => setIsOpen(!isOpen)} className={styles.btnToggle}>
-            {isOpen ? "Close" : "Open"}
+            {isOpen ? "Закрыть форму" : "Открыть форму"}
           </button>
         }
       </div>
@@ -133,7 +133,7 @@ const ReusableForm = ({ fields, onSubmit, title, defaultOpen = false, disabled =
                     onClick={() => addBlockingPair(name)}
                     className={styles.btnAddPair}
                   >
-                    Add
+                    Добавить
                   </button>
                 </div>
               ) : type === "textarea" ? (
@@ -149,7 +149,7 @@ const ReusableForm = ({ fields, onSubmit, title, defaultOpen = false, disabled =
                   onChange={(e) => handleChange(name, e.target.value)}
                   className={styles.input}
                 >
-                  <option value="">{placeholder || "Select..."}</option>
+                  <option value="">{placeholder || "Выбрать..."}</option>
                   {selects?.map((option) => (
                     <option key={option} value={option}>{option}</option>
                   ))}
@@ -166,7 +166,7 @@ const ReusableForm = ({ fields, onSubmit, title, defaultOpen = false, disabled =
             </div>
           ))}
 
-          <button onClick={handleSubmit} className={styles.btnSubmit}>Submit</button>
+          <button onClick={handleSubmit} className={styles.btnSubmit}>Отправить</button>
         </div>
       )}
     </div>

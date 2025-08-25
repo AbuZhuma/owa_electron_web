@@ -19,8 +19,8 @@ const Profile = () => {
       return (
             <Page>
                   <UserInfo />
-                  <Button text="Logout" onClick={logout}/>
                   <UpdateMe/>
+                  <Button text="Выйти с аккаунта" onClick={logout}/>
                   <UserTasks/>
             </Page>
       )

@@ -4,7 +4,7 @@ import userStore from "@/store/userStore"
 const UserInfo = () => {
       const {user} = userStore()
       return (
-            <MoreInfo title={`${user.username} info`} item={user}/>
+            <MoreInfo title={`${user.username}`} item={user}/>
       )
 }
 

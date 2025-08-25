@@ -8,7 +8,7 @@ interface MultiSelectProps {
       clearOn?: boolean
 }
 
-const MultiSelect: React.FC<MultiSelectProps> = ({ options, clearOn = false, onSelect, placeholder = "Select..." }) => {
+const MultiSelect: React.FC<MultiSelectProps> = ({ options, clearOn = false, onSelect, placeholder = "Выбрать..." }) => {
       const [selected, setSelected] = useState<string[]>([]);
       const [open, setOpen] = useState(false);
       const containerRef = useRef<HTMLDivElement>(null);

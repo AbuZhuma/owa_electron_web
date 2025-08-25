@@ -4,7 +4,7 @@ import DataTable from '@/shared/data_table/DataTable'
 const Archive = () => {
       const {archive} = useCrmStore()
       return (
-            <DataTable title='Archive' data={archive}/>
+            <DataTable title='Архивы' data={archive}/>
       )
 }
 

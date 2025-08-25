@@ -17,9 +17,9 @@ const ControlUser:FC<IControl> = ({data}) => {
                         title="Update user"
                         defaultOpen={true}
                         fields={[
-                              { name: "role", type: "selector",initVal: data.role, placeholder: "User role", selects: roles },
-                              { name: "job_title", type: "selector", initVal: data.job_title, placeholder: "Choose job title", selects: job_titles},
-                              { name: "more", type: "textarea", placeholder: "More info", isBlocking: true }
+                              { name: "role", type: "selector",initVal: data.role, placeholder: "Роль", selects: roles },
+                              { name: "job_title", type: "selector", initVal: data.job_title, placeholder: "Должность", selects: job_titles},
+                              { name: "more", type: "textarea", placeholder: "Больше информации", isBlocking: true }
                         ]}
                         onSubmit={(d) => updateOne(d, data.username)}
                   />

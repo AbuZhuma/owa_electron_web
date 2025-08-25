@@ -7,7 +7,7 @@ const AdminUsersList = () => {
       const {users} = userStore()
       
       return (
-            <DataTable form={(data) => <ControlUser data={data} />} title='Employees' data={users} />
+            <DataTable form={(data) => <ControlUser data={data} />} title='Сотрудники' data={users} />
       )
 }
 

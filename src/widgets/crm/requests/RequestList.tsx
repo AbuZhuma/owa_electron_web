@@ -5,7 +5,7 @@ import CreateComment from './CreateComment'
 const RequestList = () => {
       const { requests } = useCrmStore()
       return (    
-            <DataTable form={(item) => <CreateComment data={item}/>} title='Requests' data={requests} />
+            <DataTable form={(item) => <CreateComment data={item}/>} title='Заявки' data={requests} />
       )
 }
 

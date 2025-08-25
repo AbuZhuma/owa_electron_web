@@ -59,7 +59,7 @@ const OneReuest = () => {
 
                               return null
                         })}
-                        <MoreInfo title={`Request - ${item.title}`} item={item} form={<CreateComment data={item} />} />
+                        <MoreInfo title={`${item.title}`} item={item} form={<CreateComment data={item} />} />
                   </div>
             )
       }
@@ -67,7 +67,7 @@ const OneReuest = () => {
             <Page>
                   {req ?
                         renderExpandedDetails(req[0]) :
-                        <p>Loading...</p>
+                        <p>Загрузка...</p>
                   }
             </Page>
       )

@@ -6,10 +6,10 @@ const UpdateMe = () => {
       return (
             <div>
                   <ReusableForm
-                        title="Add more info"
+                        title="Добавить больше информации"
                         defaultOpen={true}
                         fields={[
-                              { name: "more", type: "textarea", placeholder: "More info", isBlocking: true }
+                              { name: "more", type: "textarea", placeholder: "Больше информации", isBlocking: true }
                         ]}
                         onSubmit={(d) => updateMe(d)}
                   />

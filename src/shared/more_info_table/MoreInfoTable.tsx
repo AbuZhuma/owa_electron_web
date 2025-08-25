@@ -7,7 +7,7 @@ interface OneClientProps<T> {
   form?: ReactNode | null
 }
 
-const MoreInfo = <T extends Record<string, any>>({ item, title = "More Information", form = null }: OneClientProps<T>) => {
+const MoreInfo = <T extends Record<string, any>>({ item, title = "Больше информации", form = null }: OneClientProps<T>) => {
   const isArrayOfStringPairs = (val: any): val is [string, string][] =>
     Array.isArray(val) &&
     val.length > 0 &&

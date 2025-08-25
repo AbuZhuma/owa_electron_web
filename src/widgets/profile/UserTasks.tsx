@@ -5,7 +5,7 @@ import DataTable from "@/shared/data_table/DataTable"
 const UserTasks = () => {
       const {user} = userStore()
       return (
-            <DataTable form={(item) => <CreateComment data={item}/>} title={`${user.username} active tasks`} data={user.tasks}/>
+            <DataTable form={(item) => <CreateComment data={item}/>} title={`Активные задачи ${user.username}`} data={user.tasks}/>
       )
 }
 

@@ -38,7 +38,7 @@ const Filter: React.FC<FilterProps> = ({ type }) => {
                   <div className={styles.filterItem}>
                         <MultiSelect
                               clearOn={isFiltering[type]}
-                              placeholder="Executers"
+                              placeholder="Сотрудники"
                               options={executers}
                               onSelect={(all) => setFilter(type, "executor", all)}
                         />
@@ -47,7 +47,7 @@ const Filter: React.FC<FilterProps> = ({ type }) => {
                   <div className={styles.filterItem}>
                         <MultiSelect
                               clearOn={isFiltering[type]}
-                              placeholder="Clients"
+                              placeholder="Клиенты"
                               options={clients}
                               onSelect={(all) => setFilter(type, "client", all)}
                         />
@@ -56,7 +56,7 @@ const Filter: React.FC<FilterProps> = ({ type }) => {
                   <div className={styles.filterItem}>
                         <MultiSelect
                               clearOn={isFiltering[type]}
-                              placeholder="Statuses"
+                              placeholder="Статусы"
                               options={statuses}
                               onSelect={(all) => setFilter(type, "status", all)}
                         />
@@ -68,7 +68,7 @@ const Filter: React.FC<FilterProps> = ({ type }) => {
                               setDate(e.target.value)
                         }} />
                   </div>
-                  {isFiltering[type] && <Button text="Reset filters" onClick={() => resetFilters()} />}
+                  {isFiltering[type] && <Button text="Сбросить фильтр" onClick={() => resetFilters()} />}
             </div>
       );
 };

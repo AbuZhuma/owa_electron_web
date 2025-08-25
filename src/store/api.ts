@@ -1,7 +1,6 @@
 import { IOneClient, IOneRequest } from "@/types/crm"
 import { IUser, IUserReg } from "@/types/users"
 import axios, { AxiosInstance } from "axios"
-import { data } from "react-router-dom"
 export interface AuthCredentials {
       username: string
       password: string

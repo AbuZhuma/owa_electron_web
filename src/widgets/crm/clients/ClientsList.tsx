@@ -5,7 +5,7 @@ import EditClient from './ClientEdit'
 const ClientsList = () => {
       const { clients } = useCrmStore()
       return (
-            <DataTable title='Clients' data={clients} form={(d) => <EditClient data={d}/>} />
+            <DataTable title='Клиенты' data={clients} form={(d) => <EditClient data={d}/>} />
       )
 }
 

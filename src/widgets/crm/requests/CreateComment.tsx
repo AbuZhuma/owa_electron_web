@@ -18,14 +18,14 @@ const CreateComment: FC<ICreateComment> = ({ data }) => {
             <div className='controller'>
                   <div className='row_center'>
                         {user.username === data.executor ?
-                              <Button text='Push to review' onClick={() => reviewRequest(data.uuid)} />
+                              <Button text='На расмотрение' onClick={() => reviewRequest(data.uuid)} />
                               : null}
                         <Link to={`/request/${data.uuid}`}>Request link</Link>
                   </div>
 
                   <ReusableForm
                         defaultOpen={true}
-                        title='Comment'
+                        title='Комментировать'
                         fields={[
                               { name: "comment", type: "text", placeholder: "Commenting" },
                         ]}
@@ -33,7 +33,7 @@ const CreateComment: FC<ICreateComment> = ({ data }) => {
                   />
                   <ReusableForm
                         defaultOpen={true}
-                        title='Archive this request'
+                        title='Архивировать'
                         fields={[
                               { name: "commit", type: "text", placeholder: "Commit" },
                         ]}
@@ -41,11 +41,11 @@ const CreateComment: FC<ICreateComment> = ({ data }) => {
                         disabled={!(user.role === "admin" || user.role === "manager")}
                   />
                   <ReusableForm
-                        title="Update request"
+                        title="Обновить"
                         defaultOpen={true}
                         fields={[
-                              { name: "status", type: "selector", placeholder: "Request status", initVal: data.status, selects: request_status_list },
-                              { name: "more", type: "textarea", placeholder: "More info", isBlocking: true }
+                              { name: "status", type: "selector", placeholder: "Статус заявки", initVal: data.status, selects: request_status_list },
+                              { name: "more", type: "textarea", placeholder: "Больше информации", isBlocking: true }
                         ]}
                         disabled={!(user.role === "admin" || user.role === "manager")}
                         onSubmit={(d) => updateRequest(data.uuid, d)}

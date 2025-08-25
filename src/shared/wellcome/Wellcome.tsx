@@ -7,10 +7,10 @@ interface WelcomeProps {
 }
 
 const motivationalMessages: string[] = [
-  "Let's go, hero! Tasks won't solve themselves!",
-  "You can do anything! Even more than you think.",
-  "Every completed task is +1 to your power 💪",
-  "Today is your day! Let's crush it! 🚀"
+  "Вперёд, герой! Задачи сами себя не решат!",
+  "Ты можешь всё! Даже больше, чем думаешь.",
+  "Каждая выполненная задача — +1 к твоей силе 💪",
+  "Сегодня твой день! Давай разнесём всё! 🚀"
 ]
 
 const Welcome: React.FC<WelcomeProps> = ({ username, tasks }) => {
@@ -25,7 +25,7 @@ const Welcome: React.FC<WelcomeProps> = ({ username, tasks }) => {
   return (
     <div className={styles.wrapper}>
       <h1>
-        Hi, {username}! 👋
+        Привеет {username}! 👋
       </h1>
       <h3>
         {message}

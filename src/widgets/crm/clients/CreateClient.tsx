@@ -7,9 +7,9 @@ const CreateClient = () => {
             <ReusableForm
                   title="Create client"
                   fields={[
-                        { name: "username", type: "text", placeholder: "Client name" },
-                        { name: "company", type: "text", placeholder: "Company" },
-                        { name: "more", type: "textarea", placeholder: "More info", isBlocking: true },
+                        { name: "username", type: "text", placeholder: "Имя" },
+                        { name: "company", type: "text", placeholder: "Компания" },
+                        { name: "more", type: "textarea", placeholder: "Больше информации", isBlocking: true },
                   ]}
                   onSubmit={createClient}
             />

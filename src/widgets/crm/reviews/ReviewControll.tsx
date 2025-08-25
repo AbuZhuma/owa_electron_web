@@ -17,15 +17,15 @@ const ReviewControll: FC<ICreateComment> = ({ data }) => {
             <div className='controller'>
                   <ReusableForm
                         defaultOpen={true}
-                        title='Back review'
+                        title='Назад на выполнение'
                         fields={[
-                              { name: "comment", type: "text", placeholder: "Commenting" },
+                              { name: "comment", type: "text", placeholder: "Коментировать" },
                         ]}
                         onSubmit={(comment) => backReview(data.uuid, comment.comment)}
                   />
                   <ReusableForm
                         defaultOpen={true}
-                        title='Archive this request'
+                        title='Архивировать'
                         fields={[
                               { name: "commit", type: "text", placeholder: "Commit" },
                         ]}

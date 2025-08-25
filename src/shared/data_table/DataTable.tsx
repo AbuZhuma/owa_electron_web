@@ -17,7 +17,7 @@ const DataTable = React.memo(<T extends Record<string, any>>({
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
 
   if (!data || data.length === 0) {
-    return <div className={styles.empty}>No data</div>
+    return <div className={styles.empty}>Пока нету данных</div>
   }
 
   const firstItem = data[0]

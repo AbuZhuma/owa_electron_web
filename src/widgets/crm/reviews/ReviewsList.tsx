@@ -5,7 +5,7 @@ import ReviewControll from './ReviewControll'
 const ReviewList = () => {
       const { reviews } = useCrmStore()
       return (
-            <DataTable form={(item) => <ReviewControll data={item}/>} title='Reviews' data={reviews} />
+            <DataTable form={(item) => <ReviewControll data={item}/>} title='На расмотрении' data={reviews} />
       )
 }
 
