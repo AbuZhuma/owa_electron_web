@@ -9,7 +9,7 @@ export interface AuthCredentials {
 
 const gurl = 'https://owa-server.onrender.com'
 const lurl = 'http://localhost:4001'
-export const curUrl = lurl
+export const curUrl = gurl
 const api: AxiosInstance = axios.create({
       baseURL: `${curUrl}/api`,
       headers: {
